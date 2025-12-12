@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+.nav {
+    background-color: #FBEFEF;
+
+}
+
+.nav2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+}
