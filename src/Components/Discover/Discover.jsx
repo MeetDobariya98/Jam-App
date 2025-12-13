@@ -1,9 +1,11 @@
-import React from 'react'
+import Search from './Search'
+import Users from './Users'
 
 const Discover = () => {
   return (
-    <div className='bg-amber-200'> 
-      this is a Dicover LandingPage
+    <div> 
+      <Search/>
+      <Users/>
     </div>
   )
 }

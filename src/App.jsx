@@ -9,7 +9,7 @@ import ProtectedRoute from './ProtectedRoute/ProtectedRoute'
 import SignIn from './Components/Home/SignIn'
 import Login from './Components/Home/Login'
 import Post from './Components/Post/Post'
-import NotFound from './Components/Home/NotFound'
+import NotFound from './Components/Home/notFound'
 
 
 const App = () => {
@@ -23,9 +23,9 @@ const App = () => {
         <Route
           path='/Discover'
           element={
-            <ProtectedRoute>
+            // <ProtectedRoute>
               <Discover />
-            </ProtectedRoute>
+            // </ProtectedRoute>
           }
         />
         <Route
