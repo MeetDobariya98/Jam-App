@@ -8,6 +8,9 @@ import Profile from './Components/Profile/Profile'
 import ProtectedRoute from './ProtectedRoute/ProtectedRoute'
 import SignIn from './Components/Home/SignIn'
 import Login from './Components/Home/Login'
+import Post from './Components/Post/Post'
+import NotFound from './Components/Home/NotFound'
+
 
 const App = () => {
   return (
@@ -15,7 +18,7 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/signin' element={<SignIn />} />
+        <Route path='/signup' element={<SignIn />} />
         <Route path='/login' element={<Login/>}/>
         <Route
           path='/Discover'
@@ -33,6 +36,13 @@ const App = () => {
             </ProtectedRoute>
           }
         />
+        <Route path='/Post'
+        element={
+          <ProtectedRoute>
+            <Post/>
+          </ProtectedRoute>
+        }
+        />
         <Route
           path='/Profile'
           element={
@@ -41,6 +51,7 @@ const App = () => {
             </ProtectedRoute>
           }
         />
+        <Route path="*" element={<NotFound/>}/>
       </Routes>
     </div>
   )

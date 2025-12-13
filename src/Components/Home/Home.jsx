@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   ChevronDownIcon,
   UserIcon,
@@ -8,6 +8,7 @@ import {
   BookOpenIcon,
 } from "@heroicons/react/24/outline";
 import "remixicon/fonts/remixicon.css";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -115,6 +116,63 @@ const Home = () => {
           </div>
 
         </div>
+
+      </div>
+      <div className="h-screen footer">
+        <div className="h-1/2 w-full relative bg-center bg-cover  bg-purple-600/30 bg-blend-soft-light'
+        bg-[url('https://images.unsplash.com/photo-1565719178004-420e3480e2b5?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')]">
+          <div className="absolute inset-0 bg-black/70"></div>
+          <div className="flex items-center justify-center">
+            <h1 className="text-white absolute text-4xl font-bold text-center top-17">Ready to Start Your Musical Journey?</h1>
+            <p className="text-white absolute top-30 text-center font-semibold">Join thousands of musicians who are already <br />creating, collaborating, and sharing <br />their passion for music on Jam.</p>
+            <div className="flex items-center justify-center">
+              <button className="bg-yellow-500 outline-amber-100 px-6 py-3 leading-relaxed rounded-xl absolute text-center mr-40 bottom-10  hover:bg-yellow-600"><Link to={'/signup'}>Get Start Free</Link></button>
+              <button className="absolute outline-white outline-2 text-white rounded-xl px-6 py-3 text-center  ml-50 bottom-10 hover:bg-white hover:text-black">Explore Musician</button>
+            </div>
+          </div>
+        </div>
+        <div className="flex text-left">
+          <div className="h-30 w-50 ml-40 mt-8">
+            <h1 className="font-Pacifico text-purple-600 text-2xl font-bold">Jam</h1>
+            <p className="text-1xl mt-2 text-gray-700">Connecting musicians worldwide to create, collaborate, and share their passion for music.</p>
+            <div className="flex gap-2 mt-2">
+              <i class="ri-facebook-circle-fill"></i>
+              <i class="ri-twitter-fill"></i>
+              <i class="ri-instagram-fill"></i>
+            </div>
+          </div>
+          <div className="h-30 w-50 ml-20 bg-amber mt-8">
+            <h1 className="font-semibold">Platform</h1>
+            <div className="text-sm text-gray-800 mt-2 flex flex-col leading-relaxed">
+              <Link to={'/discover'}>Discover</Link>
+              <Link to={'/communities'}>Communities</Link>
+              <Link to={'/post'}>Post</Link>
+              <Link to={'/profile'}>Profile</Link>
+            </div>
+          </div>
+          <div className="h-30 w-50 ml-10 bg-amber mt-8">
+            <h1 className="font-semibold">Support</h1>
+            <div className="text-sm text-gray-800 mt-2 flex flex-col leading-relaxed">
+              <Link to={'*'}>Help Center</Link>
+              <Link to={'*'}>Contact Us</Link>
+              <Link to={'*'}>Feedback</Link>
+              <Link to={'*'}>Community Guidelines</Link>
+            </div>
+          </div>
+          <div className="h-30 w-50 ml-10 bg-amber mt-8">
+            <h1 className="font-semibold">Legal</h1>
+            <div className="text-sm text-gray-800 mt-2 flex flex-col leading-relaxed">
+              <Link to={'*'}>Privacy Policy</Link>
+              <Link to={'*'}>Terms of Service</Link>
+              <Link to={'*'}>Cookie Policy</Link>
+            </div>
+          </div>
+        </div>
+        <hr className="mt-13 ml-40 mr-60 text-gray-500" />
+        <footer class="text-center text-gray-500 text-sm">
+          &copy; 2025 Jam. All rights reserved.
+        </footer>
+
       </div>
     </div>
   );
