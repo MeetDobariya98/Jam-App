@@ -23,11 +23,11 @@ const Navbar = () => {
 
                 <div className="hidden md:flex gap-6 text-gray-700 text-sm">
                     <Link className="hover:text-purple-600" to="/">Home</Link>
+                    <Link className="hover:text-purple-600" to="/Post">Post</Link>
                     <Link className="hover:text-purple-600" to="/Discover">Discover</Link>
                     <Link className="hover:text-purple-600" to="/Communities">Communities</Link>
-                    <Link className="hover:text-purple-600" to="/Post">Post</Link>
                     <Link className="hover:text-purple-600" to="/Profile">Profile</Link>
-                    
+
                 </div>
 
                 <div className="hidden md:flex gap-3">
@@ -52,7 +52,7 @@ const Navbar = () => {
                     <Link onClick={() => setOpen(false)} className="hover:text-purple-600" to="/Communities">Communities</Link>
                     <Link onClick={() => setOpen(false)} className="hover:text-purple-600" to="/Post">Post</Link>
                     <Link onClick={() => setOpen(false)} className="hover:text-purple-600" to="/Profile">Profile</Link>
-                    
+
                     <div className="flex gap-3 mt-3">
                         <Link to="/signup">
                             <button className="px-3 py-1 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition">
