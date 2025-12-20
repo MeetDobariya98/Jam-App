@@ -38,9 +38,9 @@ const App = () => {
         />
         <Route path='/Post'
         element={
-          <ProtectedRoute>
+         
             <Post/>
-          </ProtectedRoute>
+         
         }
         />
         <Route
