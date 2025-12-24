@@ -19,12 +19,12 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/signup' element={<SignIn />} />
-        <Route path='/login' element={<Login/>}/>
+        <Route path='/login' element={<Login />} />
         <Route
           path='/discover'
           element={
             // <ProtectedRoute>
-              <Discover />
+            <Discover />
             // </ProtectedRoute>
           }
         />
@@ -37,11 +37,11 @@ const App = () => {
           }
         />
         <Route path='/Post'
-        element={
-         
-            <Post/>
-         
-        }
+          element={
+            
+              <Post />
+            
+          }
         />
         <Route
           path='/Profile'
@@ -51,7 +51,7 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-        <Route path="*" element={<NotFound/>}/>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   )

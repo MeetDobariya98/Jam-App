@@ -1,18 +1,33 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
-    const [open, setOpen] = useState(false);
+    const navigate = useNavigate();
+    const isLoggedIn = !!localStorage.getItem("token");
+
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        navigate("/login");
+    };
 
     return (
         <nav className="w-full bg-white shadow-sm">
             <div className="flex items-center justify-between px-4 py-3 md:px-10">
 
-                <Link to={"/"}>
-                    <h1 className="font-Pacifico text-purple-600 text-2xl font-bold">
-                        Jam
-                    </h1>
-                </Link>
+                {isLoggedIn && (
+                    <Link to={"/post"}>
+                        <h1 className="font-Pacifico text-purple-600 text-2xl font-bold">
+                            Jam
+                        </h1>
+                    </Link>
+                )}
+                {!isLoggedIn && (
+                    <Link to={"/"}>
+                        <h1 className="font-Pacifico text-purple-600 text-2xl font-bold">
+                            Jam
+                        </h1>
+                    </Link>
+                )}
 
                 <button
                     className="md:hidden text-gray-600 text-2xl"
@@ -22,26 +37,43 @@ const Navbar = () => {
                 </button>
 
                 <div className="hidden md:flex gap-6 text-gray-700 text-sm">
-                    <Link className="hover:text-purple-600" to="/">Home</Link>
-                    <Link className="hover:text-purple-600" to="/Post">Post</Link>
-                    <Link className="hover:text-purple-600" to="/Discover">Discover</Link>
-                    <Link className="hover:text-purple-600" to="/Communities">Communities</Link>
-                    <Link className="hover:text-purple-600" to="/Profile">Profile</Link>
+                    {!isLoggedIn && (
+                        <>
+                            <Link to="/" className="hover:text-purple-600 text-xl">Home</Link>
+                        </>
+                    )}
+                    {isLoggedIn && (
+                        <>
+                            <Link to="/post" className="hover:text-purple-600">Post</Link>
+                            <Link to="/discover" className="hover:text-purple-600">Discover</Link>
+                            <Link to="/communities" className="hover:text-purple-600">Communities</Link>
+                            <Link to="/profile" className="hover:text-purple-600">Profile</Link>
+
+                        </>
+                    )}
 
                 </div>
 
                 <div className="hidden md:flex gap-3">
-                    <Link to="/signup">
-                        <button className="px-3 py-1 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition">
-                            Sign Up
+                    {isLoggedIn && (
+                        <button
+                            onClick={handleLogout}
+                            className="bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600"
+                        >
+                            Logout
                         </button>
-                    </Link>
-
-                    <Link to="/login">
-                        <button className="px-3 py-1 bg-purple-200 text-purple-700 rounded-lg hover:bg-purple-300 transition">
-                            Log In
-                        </button>
-                    </Link>
+                    )}
+                    {!isLoggedIn && (
+                        <>
+                            <Link
+                                to="/signup"
+                                className="bg-purple-600 text-white px-4 py-1 rounded hover:bg-purple-700"
+                            >
+                                Sign Up
+                            </Link>
+                            <Link to="/login" className="bg-purple-600 text-white px-4 py-1 rounded hover:bg-purple-700">Login</Link>
+                        </>
+                    )}
                 </div>
             </div>
 

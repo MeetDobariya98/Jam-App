@@ -41,7 +41,7 @@ const Login = () => {
       alert("Login successful ✅");
 
       // ✅ Redirect to Discover (MATCHES App.jsx)
-      navigate("/discover");
+      navigate("/Post");
 
     } catch (err) {
       alert("Server error");
