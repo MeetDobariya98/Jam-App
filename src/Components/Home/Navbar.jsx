@@ -44,10 +44,10 @@ const Navbar = () => {
                     )}
                     {isLoggedIn && (
                         <>
-                            <Link to="/post" className="hover:text-purple-600">Post</Link>
-                            <Link to="/discover" className="hover:text-purple-600">Discover</Link>
-                            <Link to="/communities" className="hover:text-purple-600">Communities</Link>
-                            <Link to="/profile" className="hover:text-purple-600">Profile</Link>
+                            <Link to="/post" className="hover:text-purple-600 text-base hover:scale-140 transition-transform duration-300 inline-block">Post</Link>
+                            <Link to="/discover" className="hover:text-purple-600 text-base hover:scale-140 transition-transform duration-300 inline-block">Discover</Link>
+                            <Link to="/communities" className="hover:text-purple-600 text-base hover:scale-140 transition-transform duration-300 inline-block">Communities</Link>
+                            <Link to="/profile" className="hover:text-purple-600 text-base hover:scale-140 transition-transform duration-300 inline-block">Profile</Link>
 
                         </>
                     )}

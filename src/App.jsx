@@ -31,9 +31,9 @@ const App = () => {
         <Route
           path='/Communities'
           element={
-            <ProtectedRoute>
+           
               <Communities />
-            </ProtectedRoute>
+            
           }
         />
         <Route path='/Post'
@@ -46,9 +46,9 @@ const App = () => {
         <Route
           path='/Profile'
           element={
-            <ProtectedRoute>
+          
               <Profile />
-            </ProtectedRoute>
+           
           }
         />
         <Route path="*" element={<NotFound />} />

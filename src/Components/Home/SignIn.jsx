@@ -47,10 +47,7 @@ const SignUp = () => {
         return;
       }
 
-      // // ✅ Save token & user
-      // localStorage.setItem("token", data.token);
-      // localStorage.setItem("user", JSON.stringify(data.user));
-
+     
       alert("Signup successful ✅");
 
       // inside handleSubmit success block
