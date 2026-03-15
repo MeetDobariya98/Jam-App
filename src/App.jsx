@@ -9,7 +9,7 @@ import Messages from './Components/Messages/Messages'
 import SignIn from './Components/Home/SignIn'
 import Login from './Components/Home/Login'
 import Post from './Components/Post/Post'
-import NotFound from './Components/Home/notFound'
+import NotFound from './Components/Home/NotFound'
 import Feed from './Components/Home/Feed'
 import ForgotPassword from './Components/Home/ForgotPassword'
 
@@ -40,11 +40,11 @@ const App = () => {
         <Route path='/login' element={<Login />} />
         <Route path='/forgot-password' element={<ForgotPassword />} />
         <Route path='/discover' element={<Discover />} />
-        <Route path='/Communities' element={<Communities />} />
-        <Route path='/Post' element={<Post />} />
+        <Route path='/communities' element={<Communities />} />
+        <Route path='/post' element={<Post />} />
         <Route path='/feed' element={<Feed />} />
-        <Route path='/Profile' element={<Profile />} />
-        <Route path='/Profile/:id' element={<Profile />} />
+        <Route path='/profile' element={<Profile />} />
+        <Route path='/profile/:id' element={<Profile />} />
         <Route path='/messages' element={<Messages />} />
 
         {/* ── Secret Admin Routes ── */}
