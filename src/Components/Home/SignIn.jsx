@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import { API_URLS } from "../../api";
 
 
 const SignUp = () => {
@@ -34,7 +34,7 @@ const SignUp = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:5000/api/signup", {
+      const response = await fetch(API_URLS.auth.signup, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(user),
@@ -165,15 +165,20 @@ const SignUp = () => {
                 ))}
             </select>
 
-            {/* PASSWORD */}
-            <input
-              type="password"
-              placeholder="Create a password"
-              name="password"
-              value={user.password}
-              onChange={handleInput}
-              className="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-purple-400"
-            />
+             {/* PASSWORD */}
+            <div className="space-y-1">
+              <input
+                type="password"
+                placeholder="Create a password"
+                name="password"
+                value={user.password}
+                onChange={handleInput}
+                className="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-purple-400"
+              />
+              <div className="flex justify-end pr-1">
+                <Link to="/forgot-password" title="Already have an account?" className="text-[10px] font-bold text-purple-600 uppercase tracking-widest hover:text-purple-700 transition">Forgot Password?</Link>
+              </div>
+            </div>
 
             <button className="w-full bg-purple-600 text-white py-3 rounded-lg font-semibold hover:bg-purple-700 transition">
               Sign Up
