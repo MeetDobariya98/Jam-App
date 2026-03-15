@@ -29,7 +29,7 @@ const AdminCommunities = () => {
 
   const deleteCommunity = async (id) => {
     if (!window.confirm('Delete this community permanently?')) return;
-    await fetch(`${API_BASE_URL}/api/admin/communities/${id}`, {
+    await fetch(API_URLS.admin.deleteCommunity(id), {
       method: 'DELETE',
       headers: { Authorization: `Bearer ${token()}` },
     });

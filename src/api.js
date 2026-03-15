@@ -26,6 +26,8 @@ export const API_URLS = {
     block: (userId) => `${API_BASE_URL}/api/admin/users/${userId}/block`,
     unblock: (userId) => `${API_BASE_URL}/api/admin/users/${userId}/unblock`,
     deleteUser: (userId) => `${API_BASE_URL}/api/admin/users/${userId}`,
+    deletePost: (postId) => `${API_BASE_URL}/api/admin/posts/${postId}`,
+    deleteCommunity: (comId) => `${API_BASE_URL}/api/admin/communities/${comId}`,
     resolveReport: (reportId) => `${API_BASE_URL}/api/admin/reports/${reportId}/resolve`,
   },
   users: {

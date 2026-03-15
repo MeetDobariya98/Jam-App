@@ -36,7 +36,7 @@ const AdminPosts = () => {
 
   const deletePost = async (id) => {
     if (!window.confirm('Delete this post permanently?')) return;
-    await fetch(`${API_BASE_URL}/api/admin/posts/${id}`, {
+    await fetch(API_URLS.admin.deletePost(id), {
       method: 'DELETE',
       headers: { Authorization: `Bearer ${token()}` },
     });
