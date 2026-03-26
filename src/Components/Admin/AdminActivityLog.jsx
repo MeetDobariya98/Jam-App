@@ -31,6 +31,33 @@ const AdminActivityLog = () => {
     setLoading(false);
   }, [startDate, endDate, actionFilter]);
 
+  const handleDownload = async () => {
+    const params = new URLSearchParams();
+    if (startDate)              params.set('startDate', startDate);
+    if (endDate)                params.set('endDate', endDate);
+    if (actionFilter !== 'all') params.set('action', actionFilter);
+
+    const url = API_URLS.admin.downloadExcel;
+    
+    try {
+      const res = await fetch(`${url}?${params}`, {
+        headers: { Authorization: `Bearer ${token()}` },
+      });
+      if (!res.ok) throw new Error('Download failed');
+      
+      const blob = await res.blob();
+      const downloadUrl = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = downloadUrl;
+      a.download = `ActivityLogs_${new Date().getTime()}.xlsx`;
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(downloadUrl);
+    } catch (err) {
+      alert('Error downloading report: ' + err.message);
+    }
+  };
+
   useEffect(() => { fetchLogs(); }, [fetchLogs]);
 
   const actionDropdown = (
@@ -52,6 +79,15 @@ const AdminActivityLog = () => {
         <div>
           <h2 className="admin-page-title">🕐 Admin Activity Log</h2>
           <p className="admin-page-sub">{logs.length} event{logs.length !== 1 ? 's' : ''} found</p>
+        </div>
+        <div className="admin-header-actions" style={{ display: 'flex', gap: '10px' }}>
+          <button 
+            className="admin-btn btn-secondary" 
+            onClick={handleDownload}
+            title="Download Excel Report"
+          >
+            📊 Download Excel
+          </button>
         </div>
       </div>
 

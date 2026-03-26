@@ -29,6 +29,34 @@ const AdminUsers = () => {
 
   useEffect(() => { fetchUsers(); }, [fetchUsers]);
 
+  const handleDownload = async () => {
+    const params = new URLSearchParams();
+    if (search)    params.set('search', search);
+    if (startDate) params.set('startDate', startDate);
+    if (endDate)   params.set('endDate', endDate);
+
+    const url = API_URLS.admin.downloadUserExcel;
+    try {
+      const res = await fetch(`${url}?${params}`, {
+        headers: { Authorization: `Bearer ${token()}` },
+      });
+      if (!res.ok) {
+        const errData = await res.json().catch(() => ({}));
+        throw new Error(errData.error || errData.message || 'Download failed');
+      }
+      const blob = await res.blob();
+      const downloadUrl = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = downloadUrl;
+      a.download = `UserLoginData_${Date.now()}.xlsx`;
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(downloadUrl);
+    } catch (err) {
+      alert('Download error: ' + err.message);
+    }
+  };
+
   const blockUser = async (id, isBlocked) => {
     const route = isBlocked ? API_URLS.admin.unblock(id) : API_URLS.admin.block(id);
     await fetch(route, {
@@ -54,12 +82,21 @@ const AdminUsers = () => {
           <h2 className="admin-page-title">👥 User Management</h2>
           <p className="admin-page-sub">{users.length} user{users.length !== 1 ? 's' : ''} found</p>
         </div>
-        <input
-          className="admin-search"
-          placeholder="🔍 Search by name or email…"
-          value={search}
-          onChange={e => setSearch(e.target.value)}
-        />
+        <div style={{ display: 'flex', gap: '10px', alignItems: 'center', flexWrap: 'wrap' }}>
+          <input
+            className="admin-search"
+            placeholder="🔍 Search by name or email…"
+            value={search}
+            onChange={e => setSearch(e.target.value)}
+          />
+          <button
+            className="admin-btn btn-secondary"
+            onClick={handleDownload}
+            title="Download user login data as Excel"
+          >
+            📊 Excel
+          </button>
+        </div>
       </div>
 
       <DateFilter

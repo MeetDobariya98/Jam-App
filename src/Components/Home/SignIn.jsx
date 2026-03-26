@@ -64,9 +64,9 @@ const SignUp = () => {
         city: "",
       });
 
-    } catch (err) {
-      console.error("Register error:", err);
-      alert("Server error");
+    } catch (error) {
+      console.error("Signup fetch error:", error);
+      alert("Server error: " + error.message);
     }
   };
 
@@ -84,7 +84,7 @@ const SignUp = () => {
         </div>
 
         <form onSubmit={handleSubmit}>
-          <div className="px-6 sm:px-10 pb-8 mt-2 space-y-4">
+          <div className="px-4 sm:px-10 pb-8 mt-2 space-y-4">
 
             {/* NAME */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

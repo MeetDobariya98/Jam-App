@@ -23,6 +23,8 @@ export const API_URLS = {
     communities: `${API_BASE_URL}/api/admin/communities`,
     reports: `${API_BASE_URL}/api/admin/reports`,
     activity: `${API_BASE_URL}/api/admin/activity`,
+    downloadExcel: `${API_BASE_URL}/api/admin/activity/download/excel`,
+    downloadUserExcel: `${API_BASE_URL}/api/admin/users/download/excel`,
     block: (userId) => `${API_BASE_URL}/api/admin/users/${userId}/block`,
     unblock: (userId) => `${API_BASE_URL}/api/admin/users/${userId}/unblock`,
     deleteUser: (userId) => `${API_BASE_URL}/api/admin/users/${userId}`,

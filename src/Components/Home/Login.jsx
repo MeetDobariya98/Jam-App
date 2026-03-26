@@ -44,7 +44,8 @@ const Login = () => {
       navigate("/feed");
 
     } catch (err) {
-      alert("Server error");
+      console.error("Login fetch error:", err);
+      alert("Server error: " + err.message);
     }
   };
 
@@ -54,7 +55,7 @@ const Login = () => {
       <div className="absolute top-[-10%] right-[-10%] w-[40%] h-[40%] bg-purple-100 rounded-full blur-[120px] opacity-50" />
       <div className="absolute bottom-[-10%] left-[-10%] w-[40%] h-[40%] bg-indigo-100 rounded-full blur-[120px] opacity-50" />
 
-      <div className="bg-white/70 backdrop-blur-xl shadow-2xl shadow-purple-100 rounded-[2.5rem] p-8 sm:p-12 w-full max-w-md border border-white relative z-10 transition-all hover:shadow-purple-200">
+      <div className="bg-white/70 backdrop-blur-xl shadow-2xl shadow-purple-100 rounded-[2.5rem] p-6 sm:p-12 w-full max-w-md border border-white relative z-10 transition-all hover:shadow-purple-200">
         <div className="flex flex-col items-center mb-10">
           <div className="w-16 h-16 bg-gradient-to-br from-purple-600 to-indigo-600 rounded-2xl flex items-center justify-center shadow-lg mb-6 transform -rotate-6">
             <span className="text-3xl">🎸</span>

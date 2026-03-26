@@ -11,6 +11,7 @@ const Navbar = () => {
   const [showNotifications, setShowNotifications] = useState(false);
   const [notifications, setNotifications] = useState([]);
   const [unreadMessages, setUnreadMessages] = useState(0);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const loadUnreadMessages = async () => {
     if (!currentUser?.id && !currentUser?._id) return;
@@ -92,31 +93,39 @@ const Navbar = () => {
           </Link>
         </div>
 
-        <div className="flex items-center gap-1 md:gap-4 text-gray-500 font-medium tracking-tight">
+        {/* Mobile Hamburger Toggle */}
+        <button 
+          className="md:hidden p-2 text-gray-500 hover:text-purple-600 transition"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        >
+          {mobileMenuOpen ? "✕" : "☰"}
+        </button>
+
+        <div className={`${mobileMenuOpen ? 'flex' : 'hidden'} md:flex absolute md:relative top-16 md:top-0 left-0 w-full md:w-auto bg-white md:bg-transparent border-b md:border-none border-gray-100 flex-col md:flex-row items-center gap-1 md:gap-4 text-gray-500 font-medium tracking-tight p-4 md:p-0 shadow-lg md:shadow-none`}>
           {!isLoggedIn ? (
             <div className="flex items-center gap-4">
-              <Link to="/" className="text-sm hover:text-purple-600 transition">Home</Link>
-              <Link to="/signup" className="text-sm text-purple-600 px-5 py-2 rounded-full font-bold hover:bg-purple-50 transition border border-purple-100">Join now</Link>
-              <Link to="/login" className="text-sm bg-purple-600 text-white px-5 py-2 rounded-full font-bold hover:bg-purple-700 transition shadow-md shadow-purple-100">Sign in</Link>
+              <Link to="/" className="text-sm hover:text-purple-600 transition" onClick={() => setMobileMenuOpen(false)}>Home</Link>
+              <Link to="/signup" className="text-sm text-purple-600 px-5 py-2 rounded-full font-bold hover:bg-purple-50 transition border border-purple-100" onClick={() => setMobileMenuOpen(false)}>Join now</Link>
+              <Link to="/login" className="text-sm bg-purple-600 text-white px-5 py-2 rounded-full font-bold hover:bg-purple-700 transition shadow-md shadow-purple-100" onClick={() => setMobileMenuOpen(false)}>Sign in</Link>
             </div>
           ) : (
             <>
-              <Link to="/feed" className="flex flex-col items-center justify-center w-14 sm:w-16 h-14 hover:text-purple-600 transition group relative">
+              <Link to="/feed" className="flex flex-col items-center justify-center w-14 sm:w-16 h-14 hover:text-purple-600 transition group relative" onClick={() => setMobileMenuOpen(false)}>
                 <FaHome className="text-xl group-hover:-translate-y-0.5 transition" />
                 <span className="text-[10px] sm:text-[11px] mt-1 opacity-0 group-hover:opacity-100 transition">Home</span>
               </Link>
               
-              <Link to="/discover" className="flex flex-col items-center justify-center w-14 sm:w-16 h-14 hover:text-purple-600 transition group relative">
+              <Link to="/discover" className="flex flex-col items-center justify-center w-14 sm:w-16 h-14 hover:text-purple-600 transition group relative" onClick={() => setMobileMenuOpen(false)}>
                 <FaUsers className="text-xl group-hover:-translate-y-0.5 transition" />
                 <span className="text-[10px] sm:text-[11px] mt-1 opacity-0 group-hover:opacity-100 transition whitespace-nowrap">My Network</span>
               </Link>
               
-              <Link to="/communities" className="flex flex-col items-center justify-center w-14 sm:w-16 h-14 hover:text-purple-600 transition group relative">
+              <Link to="/communities" className="flex flex-col items-center justify-center w-14 sm:w-16 h-14 hover:text-purple-600 transition group relative" onClick={() => setMobileMenuOpen(false)}>
                 <FaSuitcase className="text-xl group-hover:-translate-y-0.5 transition" />
                 <span className="text-[10px] sm:text-[11px] mt-1 opacity-0 group-hover:opacity-100 transition">Groups</span>
               </Link>
               
-              <Link to="/messages" className="flex flex-col items-center justify-center w-14 sm:w-16 h-14 hover:text-purple-600 transition group relative">
+              <Link to="/messages" className="flex flex-col items-center justify-center w-14 sm:w-16 h-14 hover:text-purple-600 transition group relative" onClick={() => setMobileMenuOpen(false)}>
                 <div className="relative">
                   <FaCommentDots className="text-xl group-hover:-translate-y-0.5 transition" />
                   {unreadMessages > 0 && (
@@ -151,7 +160,7 @@ const Navbar = () => {
               </div>
 
               <div className="relative group flex flex-col items-center justify-center w-14 sm:w-16 h-14 cursor-pointer ml-2">
-                <Link to="/profile" className="flex flex-col items-center">
+                <Link to="/profile" className="flex flex-col items-center" onClick={() => setMobileMenuOpen(false)}>
                   <img 
                     src={currentUser?.profilePhoto || "https://www.svgrepo.com/show/384674/account-avatar-profile-user-11.svg"} 
                     alt="Me" 

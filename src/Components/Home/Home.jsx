@@ -25,16 +25,16 @@ const Home = () => {
         <h1 className="text-white absolute top-1/2 left-1/2 
           -translate-x-1/2 -translate-y-1/2 
           text-3xl sm:text-4xl md:text-5xl lg:text-6xl 
-          font-bold text-center px-4">
+          font-bold text-center px-4 w-full">
           Connect. <br />
           <span className="text-yellow-400">Collaborate.</span> <br />
           Create Music.
         </h1>
 
-        <p className="absolute bottom-28 sm:bottom-32 left-1/2 
+        <p className="absolute bottom-20 sm:bottom-32 left-1/2 
           -translate-x-1/2 text-white 
           text-sm sm:text-base md:text-lg 
-          font-semibold text-center px-4 max-w-xl">
+          font-semibold text-center px-6 w-full max-w-xl">
           Join thousands of musicians worldwide. Find your perfect bandmate,
           share your talent, and create amazing music together.
         </p>
@@ -55,7 +55,7 @@ const Home = () => {
           Jam provides tools to connect, collaborate, and grow your musical journey.
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mt-12 sm:mt-16">
           {[
             { icon: <UserIcon className="w-6 h-6" />, title: "Personalized Profiles", desc: "Create your musician profile with instruments, interests, and more." },
             { icon: <VideoCameraIcon className="w-6 h-6" />, title: "Video Sharing", desc: "Upload performances and get discovered by musicians worldwide." },
